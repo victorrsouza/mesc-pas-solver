@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?><plannerBenchmarkResult>
+  <name>2021-07-03_201455</name>
+  <aggregation>false</aggregation>
+  <availableProcessors>8</availableProcessors>
+  <loggingLevelOptaPlannerCore>debug</loggingLevelOptaPlannerCore>
+  <loggingLevelDroolsCore>warn</loggingLevelDroolsCore>
+  <maxMemory>4093640704</maxMemory>
+  <optaPlannerVersion>8.8.0.Final</optaPlannerVersion>
+  <javaVersion>Java 11.0.11 (Ubuntu)</javaVersion>
+  <javaVM>Java OpenJDK 64-Bit Server VM 11.0.11+9-Ubuntu-0ubuntu2.20.04 (Ubuntu)</javaVM>
+  <operatingSystem>Linux amd64 5.8.0-59-generic</operatingSystem>
+  <parallelBenchmarkCount>1</parallelBenchmarkCount>
+  <warmUpTimeMillisSpentLimit>60000</warmUpTimeMillisSpentLimit>
+  <solverBenchmarkResult>
+    <name>HILL_CLIMBING</name>
+    <subSingleCount>1</subSingleCount>
+    <solverConfig>
+      <environmentMode>FAST_ASSERT</environmentMode>
+      <solutionClass>org.optaplanner.solutions.pas.domain.PASPlanningSolver</solutionClass>
+      <entityClass>org.optaplanner.solutions.pas.domain.ResourceAllocation</entityClass>
+      <scoreDirectorFactory>
+        <scoreDrl>org/optaplanner/solutions/pas/drools/constraintScoreRules.drl</scoreDrl>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+      <termination>
+        <terminationCompositionStyle>OR</terminationCompositionStyle>
+        <minutesSpentLimit>2</minutesSpentLimit>
+        <bestScoreLimit>0hard/0soft</bestScoreLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <constructionHeuristic/>
+      <localSearch>
+        <localSearchType>HILL_CLIMBING</localSearchType>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult id="1">
+      <subSingleBenchmarkResult>
+        <subSingleBenchmarkIndex>0</subSingleBenchmarkIndex>
+        <usedMemoryAfterInputSolution>27272736</usedMemoryAfterInputSolution>
+        <succeeded>true</succeeded>
+        <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore">0hard/-216soft</score>
+        <timeMillisSpent>120000</timeMillisSpent>
+        <scoreCalculationCount>12316404</scoreCalculationCount>
+        <scoreExplanationSummary>Explanation of score (0hard/-216soft):
+    Constraint match totals:
+        -216soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento) has 3 matches:
+            -97soft: justifications ([3, Meta: 3, Valor: 450000.0, 3])
+            -95soft: justifications ([5, Meta: 86, Valor: 565152.0, 5])
+            ...
+    Indictments (top 5 of 9):
+        -97soft: justification (3) has 1 matches:
+            -97soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -97soft: justification (Meta: 3, Valor: 450000.0) has 1 matches:
+            -97soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -95soft: justification (5) has 1 matches:
+            -95soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -95soft: justification (Meta: 86, Valor: 565152.0) has 1 matches:
+            -95soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -24soft: justification (76) has 1 matches:
+            -24soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        ...
+</scoreExplanationSummary>
+      </subSingleBenchmarkResult>
+      <timeMillisSpent>-1</timeMillisSpent>
+      <scoreCalculationCount>-1</scoreCalculationCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult>
+    <name>TABU_SEARCH</name>
+    <subSingleCount>1</subSingleCount>
+    <solverConfig>
+      <environmentMode>FAST_ASSERT</environmentMode>
+      <solutionClass>org.optaplanner.solutions.pas.domain.PASPlanningSolver</solutionClass>
+      <entityClass>org.optaplanner.solutions.pas.domain.ResourceAllocation</entityClass>
+      <scoreDirectorFactory>
+        <scoreDrl>org/optaplanner/solutions/pas/drools/constraintScoreRules.drl</scoreDrl>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+      <termination>
+        <terminationCompositionStyle>OR</terminationCompositionStyle>
+        <minutesSpentLimit>2</minutesSpentLimit>
+        <bestScoreLimit>0hard/0soft</bestScoreLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <constructionHeuristic/>
+      <localSearch>
+        <localSearchType>TABU_SEARCH</localSearchType>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult id="2">
+      <subSingleBenchmarkResult>
+        <subSingleBenchmarkIndex>0</subSingleBenchmarkIndex>
+        <usedMemoryAfterInputSolution>33022688</usedMemoryAfterInputSolution>
+        <succeeded>true</succeeded>
+        <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore">0hard/-216soft</score>
+        <timeMillisSpent>120000</timeMillisSpent>
+        <scoreCalculationCount>11539692</scoreCalculationCount>
+        <scoreExplanationSummary>Explanation of score (0hard/-216soft):
+    Constraint match totals:
+        -216soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento) has 6 matches:
+            -97soft: justifications ([3, Meta: 3, Valor: 450000.0, 3])
+            -92soft: justifications ([8, Meta: 86, Valor: 565152.0, 8])
+            ...
+    Indictments (top 5 of 15):
+        -97soft: justification (3) has 1 matches:
+            -97soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -97soft: justification (Meta: 3, Valor: 450000.0) has 1 matches:
+            -97soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -92soft: justification (8) has 1 matches:
+            -92soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -92soft: justification (Meta: 86, Valor: 565152.0) has 1 matches:
+            -92soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -25soft: justification (0) has 2 matches:
+            -24soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            -1soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        ...
+</scoreExplanationSummary>
+      </subSingleBenchmarkResult>
+      <timeMillisSpent>-1</timeMillisSpent>
+      <scoreCalculationCount>-1</scoreCalculationCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult>
+    <name>LATE_ACCEPTANCE</name>
+    <subSingleCount>1</subSingleCount>
+    <solverConfig>
+      <environmentMode>FAST_ASSERT</environmentMode>
+      <solutionClass>org.optaplanner.solutions.pas.domain.PASPlanningSolver</solutionClass>
+      <entityClass>org.optaplanner.solutions.pas.domain.ResourceAllocation</entityClass>
+      <scoreDirectorFactory>
+        <scoreDrl>org/optaplanner/solutions/pas/drools/constraintScoreRules.drl</scoreDrl>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+      <termination>
+        <terminationCompositionStyle>OR</terminationCompositionStyle>
+        <minutesSpentLimit>2</minutesSpentLimit>
+        <bestScoreLimit>0hard/0soft</bestScoreLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <constructionHeuristic/>
+      <localSearch>
+        <localSearchType>LATE_ACCEPTANCE</localSearchType>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult id="3">
+      <subSingleBenchmarkResult>
+        <subSingleBenchmarkIndex>0</subSingleBenchmarkIndex>
+        <usedMemoryAfterInputSolution>33028320</usedMemoryAfterInputSolution>
+        <succeeded>true</succeeded>
+        <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore">0hard/-517soft</score>
+        <timeMillisSpent>120000</timeMillisSpent>
+        <scoreCalculationCount>5451734</scoreCalculationCount>
+        <scoreExplanationSummary>Explanation of score (0hard/-517soft):
+    Constraint match totals:
+        -517soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento) has 104 matches:
+            -99soft: justifications ([1, Meta: 86, Valor: 565152.0, 1])
+            -99soft: justifications ([1, Meta: 3, Valor: 450000.0, 1])
+            ...
+    Indictments (top 5 of 189):
+        -223soft: justification (1) has 11 matches:
+            -99soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            -99soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            ...
+        -99soft: justification (Meta: 86, Valor: 565152.0) has 1 matches:
+            -99soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -99soft: justification (Meta: 3, Valor: 450000.0) has 1 matches:
+            -99soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -59soft: justification (97) has 21 matches:
+            -3soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            -3soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            ...
+        -54soft: justification (96) has 14 matches:
+            -4soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            -4soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            ...
+        ...
+</scoreExplanationSummary>
+      </subSingleBenchmarkResult>
+      <timeMillisSpent>-1</timeMillisSpent>
+      <scoreCalculationCount>-1</scoreCalculationCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult>
+    <name>GREAT_DELUGE</name>
+    <subSingleCount>1</subSingleCount>
+    <solverConfig>
+      <environmentMode>FAST_ASSERT</environmentMode>
+      <solutionClass>org.optaplanner.solutions.pas.domain.PASPlanningSolver</solutionClass>
+      <entityClass>org.optaplanner.solutions.pas.domain.ResourceAllocation</entityClass>
+      <scoreDirectorFactory>
+        <scoreDrl>org/optaplanner/solutions/pas/drools/constraintScoreRules.drl</scoreDrl>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+      <termination>
+        <terminationCompositionStyle>OR</terminationCompositionStyle>
+        <minutesSpentLimit>2</minutesSpentLimit>
+        <bestScoreLimit>0hard/0soft</bestScoreLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <constructionHeuristic/>
+      <localSearch>
+        <localSearchType>GREAT_DELUGE</localSearchType>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult id="4">
+      <subSingleBenchmarkResult>
+        <subSingleBenchmarkIndex>0</subSingleBenchmarkIndex>
+        <usedMemoryAfterInputSolution>33010928</usedMemoryAfterInputSolution>
+        <succeeded>true</succeeded>
+        <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore">0hard/-5183soft</score>
+        <timeMillisSpent>120011</timeMillisSpent>
+        <scoreCalculationCount>1882668</scoreCalculationCount>
+        <scoreExplanationSummary>Explanation of score (0hard/-5183soft):
+    Constraint match totals:
+        -5183soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento) has 168 matches:
+            -100soft: justifications ([0, Meta: 167, Valor: 14000.0, 0])
+            -100soft: justifications ([0, Meta: 86, Valor: 565152.0, 0])
+            ...
+    Indictments (top 5 of 265):
+        -921soft: justification (0) has 22 matches:
+            -100soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            -100soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            ...
+        -505soft: justification (9) has 11 matches:
+            -91soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            -89soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            ...
+        -479soft: justification (3) has 9 matches:
+            -97soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            -97soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            ...
+        -407soft: justification (2) has 9 matches:
+            -98soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            -92soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            ...
+        -358soft: justification (1) has 13 matches:
+            -99soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            -50soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            ...
+        ...
+</scoreExplanationSummary>
+      </subSingleBenchmarkResult>
+      <timeMillisSpent>-1</timeMillisSpent>
+      <scoreCalculationCount>-1</scoreCalculationCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult>
+    <name>VARIABLE_NEIGHBORHOOD_DESCENT</name>
+    <subSingleCount>1</subSingleCount>
+    <solverConfig>
+      <environmentMode>FAST_ASSERT</environmentMode>
+      <solutionClass>org.optaplanner.solutions.pas.domain.PASPlanningSolver</solutionClass>
+      <entityClass>org.optaplanner.solutions.pas.domain.ResourceAllocation</entityClass>
+      <scoreDirectorFactory>
+        <scoreDrl>org/optaplanner/solutions/pas/drools/constraintScoreRules.drl</scoreDrl>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+      </scoreDirectorFactory>
+      <termination>
+        <terminationCompositionStyle>OR</terminationCompositionStyle>
+        <minutesSpentLimit>2</minutesSpentLimit>
+        <bestScoreLimit>0hard/0soft</bestScoreLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+      </constructionHeuristic>
+      <constructionHeuristic/>
+      <localSearch>
+        <localSearchType>VARIABLE_NEIGHBORHOOD_DESCENT</localSearchType>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult id="5">
+      <subSingleBenchmarkResult>
+        <subSingleBenchmarkIndex>0</subSingleBenchmarkIndex>
+        <usedMemoryAfterInputSolution>33014200</usedMemoryAfterInputSolution>
+        <succeeded>true</succeeded>
+        <score class="org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore">0hard/-14411soft</score>
+        <timeMillisSpent>120000</timeMillisSpent>
+        <scoreCalculationCount>22065892</scoreCalculationCount>
+        <scoreExplanationSummary>Explanation of score (0hard/-14411soft):
+    Constraint match totals:
+        -14411soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento) has 145 matches:
+            -100soft: justifications ([0, Meta: 178, Valor: 150000.0, 0, 0])
+            -100soft: justifications ([0, Meta: 177, Valor: 450000.0, 0, 0])
+            ...
+    Indictments (top 5 of 148):
+        -14314soft: justification (0) has 144 matches:
+            -100soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            -100soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+            ...
+        -100soft: justification (Meta: 178, Valor: 150000.0) has 1 matches:
+            -100soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -100soft: justification (Meta: 177, Valor: 450000.0) has 1 matches:
+            -100soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -100soft: justification (Meta: 176, Valor: 8000.0) has 1 matches:
+            -100soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        -100soft: justification (Meta: 175, Valor: 500000.0) has 1 matches:
+            -100soft: constraint (totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento)
+        ...
+</scoreExplanationSummary>
+      </subSingleBenchmarkResult>
+      <timeMillisSpent>-1</timeMillisSpent>
+      <scoreCalculationCount>-1</scoreCalculationCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <unifiedProblemBenchmarkResult>
+    <name>Problem_0</name>
+    <instanceProblemProvider/>
+    <writeOutputSolutionEnabled>false</writeOutputSolutionEnabled>
+    <bestScoreProblemStatistic>
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <singleBenchmarkResult>1</singleBenchmarkResult>
+    <singleBenchmarkResult>2</singleBenchmarkResult>
+    <singleBenchmarkResult>3</singleBenchmarkResult>
+    <singleBenchmarkResult>4</singleBenchmarkResult>
+    <singleBenchmarkResult>5</singleBenchmarkResult>
+    <entityCount>397</entityCount>
+    <variableCount>397</variableCount>
+    <maximumValueCount>101</maximumValueCount>
+    <problemScale>40097</problemScale>
+    <inputSolutionLoadingTimeMillisSpent>1</inputSolutionLoadingTimeMillisSpent>
+  </unifiedProblemBenchmarkResult>
+  <startingTimestamp>2021-07-03T20:14:55.486566-03:00</startingTimestamp>
+  <benchmarkTimeMillisSpent>669287</benchmarkTimeMillisSpent>
+</plannerBenchmarkResult>

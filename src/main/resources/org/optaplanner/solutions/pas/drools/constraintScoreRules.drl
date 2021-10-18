@@ -1,0 +1,75 @@
+package org.optaplanner.solutions.pas.drools;
+    dialect "java"
+
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder;
+import org.optaplanner.solutions.pas.domain.*;
+
+global HardSoftScoreHolder scoreHolder;
+
+// ############################################################################
+// Hard constraints
+// ############################################################################
+
+rule "quantidadeAlocadaNaoPodeUlrapassarORecursoDisponivelNaFonte"
+    when
+        $source : FinancialSource($availableResource : availableResource)
+        accumulate(
+            ResourceAllocation(
+                source != null,
+                item != null,
+                allocationPercentage != null,
+                source == $source,
+                $calculatedItem : calculationSourceUsed
+            );            
+            $total : sum($calculatedItem);
+            $total > $availableResource
+        )
+    then
+        int $score = (int) ($availableResource - $total);
+        scoreHolder.addHardConstraintMatch(kcontext, $score);
+end
+
+rule "totalDeAlocacaoPorMetaNaoDeveSerMaiorQueCemPorcento"
+    when
+        $item : PlanningItem($estimatedResource : estimatedResource)
+        accumulate(
+            ResourceAllocation(
+                source != null,
+                item != null,
+                allocationPercentage != null,
+                item == $item,
+                $itemPercentage : allocationPercentage.doubleValue
+            );
+            $total : sum($itemPercentage);
+            $total > 100
+        )
+    then
+        int $score = (int) (100 - $total);
+        if ($score == 0) $score = -1;
+        scoreHolder.addHardConstraintMatch(kcontext, $score);
+end
+
+// ############################################################################
+// Soft constraints
+// ############################################################################
+
+
+rule "totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento"
+    when
+        $item : PlanningItem($estimatedResource : estimatedResource)
+        accumulate(
+            ResourceAllocation(
+                source != null,
+                item != null,
+                allocationPercentage != null,
+                item == $item,
+                $itemPercentage : allocationPercentage.doubleValue
+            );
+            $total : sum($itemPercentage);
+            $total < 100
+        )
+    then
+        int $score = (int) ($total - 100);
+        if ($score == 0) $score = -1;
+        scoreHolder.addSoftConstraintMatch(kcontext, $score);
+end

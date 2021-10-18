@@ -1,0 +1,13 @@
+{
+	"sources":[
+		{ "code": 1, "availableResource": 10 },
+		{ "code": 2, "availableResource": 60 },
+		{ "code": 3, "availableResource": 80 },
+	],
+	"items":[
+		{ "id": 1, "acceptableCodes": [1,2,3], "estimatedResource": 200 },
+		{ "id": 2, "acceptableCodes": [2], "estimatedResource": 50 },
+		{ "id": 3, "acceptableCodes": [2], "estimatedResource": 15 }
+	],
+	"percentageScale": 1
+}
