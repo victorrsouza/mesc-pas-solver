@@ -16,28 +16,39 @@ import java.util.*;
 public class BenchmarkApp {
     public static void main(String[] args) {
 
+        List<String> datasets = Arrays.asList("dataset2");
+        List<PASPlanningSolver> problems = new ArrayList<PASPlanningSolver>();
+
+        for (String file : datasets) {
+            // Create Dataset
+            System.out.println("Creating Dataset '" + file + "' \n");
+            DataReader dataReader = new DataReader();
+            ProblemContent dataset = dataReader.readFromJson(
+                "org/optaplanner/solutions/pas/data/" + file + ".json"
+            );
+            
+            // Get Problem Entities
+            List<FinancialSource> sources = dataset.getSourceList();
+            List<PlanningItem> items = dataset.getPlanningItemList();
+            List<ResourceAllocation> allocations = dataset.getResourceAllocationList();
+            List<AllocationPercentage> percentages = dataset.getAllocationPercentageList();
+
+            // Create problem
+            PASPlanningSolver problem =
+                new PASPlanningSolver(sources, items, allocations, percentages);
+            
+            problems.add(problem);
+        }
+
         // Build the Solver
         System.out.println("Starting Solver\n");
-        PlannerBenchmarkFactory benchmarkFactory = PlannerBenchmarkFactory.createFromXmlResource(
-                "org/optaplanner/solutions/pas/config/benchmarkConfig.xml");
+        PlannerBenchmarkFactory benchmarkFactory = 
+            PlannerBenchmarkFactory.createFromXmlResource(
+                "org/optaplanner/solutions/pas/config/benchmarkConfig.xml"
+            );
 
-        // Create Dataset
-        System.out.println("Creating Dataset\n");
-        DataReader dataGenerator = new DataReader();
-        ProblemContent dataset = dataGenerator.readFromTxt("base_pas");
-
-        List<FinancialSource> sources = dataset.getSourceList();
-        List<PlanningItem> items = dataset.getPlanningItemList();
-        List<ResourceAllocation> allocations = dataset.getResourceAllocationList();
-        List<AllocationPercentage> percentages = dataset.getAllocationPercentageList();
-
-        PASPlanningSolver unsolved = new PASPlanningSolver(sources, items, allocations, percentages);
-
-        List<PASPlanningSolver> binpackingDataset = new ArrayList<PASPlanningSolver>();
-        binpackingDataset.add(unsolved);
-
-        // Build the Solver
-        PlannerBenchmark plannerBenchmark = benchmarkFactory.buildPlannerBenchmark(binpackingDataset);
+        // Build the Benchmark
+        PlannerBenchmark plannerBenchmark = benchmarkFactory.buildPlannerBenchmark(problems);
         plannerBenchmark.benchmarkAndShowReportInBrowser();
     }
 }

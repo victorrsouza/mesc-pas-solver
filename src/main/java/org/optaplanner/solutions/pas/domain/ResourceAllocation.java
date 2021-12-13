@@ -6,6 +6,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
 import org.optaplanner.solutions.pas.optional.domain.ItemDifficultyComparator;
+import org.optaplanner.solutions.pas.optional.domain.PercentageComparator;
 
 @PlanningEntity(difficultyComparatorClass = ItemDifficultyComparator.class)
 @XStreamAlias("ResourceAllocation")
@@ -44,7 +45,7 @@ public class ResourceAllocation {
         this.item = item;
     }
 
-    @PlanningVariable(valueRangeProviderRefs = {"percentageAllocationRange"})
+    @PlanningVariable(valueRangeProviderRefs = {"percentageAllocationRange"}, strengthComparatorClass = PercentageComparator.class)
     public AllocationPercentage getAllocationPercentage() {
         return percentage;
     }
@@ -65,7 +66,7 @@ public class ResourceAllocation {
     @Override
     public String toString() {
         if (source != null && percentage != null){
-            return item + ", " + source + ", " + percentage;
+            return item + "; " + source + "; " + percentage;
         }else {
             return item + ", NA";
         }

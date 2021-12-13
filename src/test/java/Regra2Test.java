@@ -30,7 +30,7 @@ public class Regra2Test extends BaseTest {
 			.map(x -> x.getAllocationPercentage().getValue())
 			.reduce(BigDecimal.ZERO, BigDecimal::add);
 
-		Double sourceUsed = solved.getAllocationList().stream()
+		double sourceUsed = solved.getAllocationList().stream()
 			.map(x -> x.getCalculationSourceUsed())
 			.reduce(0.0, Double::sum);
 
@@ -65,7 +65,7 @@ public class Regra2Test extends BaseTest {
 			.map(x -> x.getAllocationPercentage().getValue())
 			.reduce(BigDecimal.ZERO, BigDecimal::add);
 
-		Double sourceUsed1 = solved.getAllocationList().stream()
+		double sourceUsed1 = solved.getAllocationList().stream()
 			.filter(x -> x.getItem().equals(item1))
 			.map(x -> x.getCalculationSourceUsed())
 			.reduce(0.0, Double::sum);
@@ -78,7 +78,7 @@ public class Regra2Test extends BaseTest {
 			.map(x -> x.getAllocationPercentage().getValue())
 			.reduce(BigDecimal.ZERO, BigDecimal::add);
 
-		Double sourceUsed2 = solved.getAllocationList().stream()
+		double sourceUsed2 = solved.getAllocationList().stream()
 			.filter(x -> x.getItem().equals(item2))
 			.map(x -> x.getCalculationSourceUsed())
 			.reduce(0.0, Double::sum);
@@ -109,7 +109,7 @@ public class Regra2Test extends BaseTest {
 			.map(x -> x.getAllocationPercentage().getValue())
 			.reduce(BigDecimal.ZERO, BigDecimal::add);
 
-		Double sourceUsed1 = solved.getAllocationList().stream()
+		double sourceUsed1 = solved.getAllocationList().stream()
 			.filter(x -> x.getItem().equals(item1))
 			.map(x -> x.getCalculationSourceUsed())
 			.reduce(0.0, Double::sum);
@@ -122,7 +122,7 @@ public class Regra2Test extends BaseTest {
 			.map(x -> x.getAllocationPercentage().getValue())
 			.reduce(BigDecimal.ZERO, BigDecimal::add);
 
-		Double sourceUsed2 = solved.getAllocationList().stream()
+		double sourceUsed2 = solved.getAllocationList().stream()
 			.filter(x -> x.getItem().equals(item2))
 			.map(x -> x.getCalculationSourceUsed())
 			.reduce(0.0, Double::sum);

@@ -2,6 +2,7 @@ package org.optaplanner.solutions.pas.domain;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,18 @@ public class PlanningItem {
     private List<Integer> acceptableCodes;
 
     public PlanningItem(){}
+
+    public PlanningItem(int id, BigDecimal estimatedResource, List<Integer> acceptableCodes) {
+        this.id = id;
+        this.estimatedResource = estimatedResource.doubleValue();
+        this.acceptableCodes = acceptableCodes;
+    }
+
+    public PlanningItem(int id, BigDecimal estimatedResource) {
+        this.id = id;
+        this.estimatedResource = estimatedResource.doubleValue();
+        this.acceptableCodes = new ArrayList<Integer>();
+    }
 
     public PlanningItem(int id, double estimatedResource, List<Integer> acceptableCodes) {
         this.id = id;
@@ -52,6 +65,6 @@ public class PlanningItem {
 
     @Override
     public String toString() {
-        return "Meta: " + getId() + ", Valor: " + getEstimatedResource();
+        return "Meta: " + getId() + "; R$" + getEstimatedResource();
     }
 }

@@ -2,6 +2,7 @@ package org.optaplanner.solutions.pas.shared;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -11,8 +12,8 @@ import java.util.*;
 import org.optaplanner.solutions.pas.domain.AllocationPercentage;
 import org.optaplanner.solutions.pas.domain.PlanningItem;
 import org.optaplanner.solutions.pas.domain.ResourceAllocation;
-import org.optaplanner.solutions.pas.domain.FinancialSource;
 
+import org.optaplanner.solutions.pas.domain.FinancialSource;
 import org.json.*;
 
 public class DataReader {
@@ -26,12 +27,15 @@ public class DataReader {
         this.directory = new File(".");
     }
 
-    public ProblemContent readFromTxt(String fileName) {
+    public ProblemContent readFromTxt(String fileName) throws JSONException, IOException {
 
         String filePath = this.directory.getAbsolutePath() + "/src/main/resources/org/optaplanner/solutions/pas/data/" + fileName + ".txt";
         File file = new File(filePath);
         
         String inputType = "";
+        JSONObject json = new JSONObject();
+        JSONArray sources = new JSONArray();
+        JSONArray items = new JSONArray();
 
         try {
             scanner = new Scanner(file);    
@@ -53,7 +57,14 @@ public class DataReader {
                     String[] fonteAttr = line.split(":");
                     int fonteId = Integer.parseInt(fonteAttr[0]);
                     double fonteValue = Double.parseDouble(fonteAttr[1]);
-                    this.problem.addSource(new FinancialSource(fonteId, fonteValue));
+
+                    FinancialSource source = new FinancialSource(fonteId, fonteValue);
+                    this.problem.addSource(source);
+
+                    JSONObject jsonSource = new JSONObject();
+                    jsonSource.put("code", fonteId);
+                    jsonSource.put("availableResource", fonteValue);
+                    sources.put(jsonSource);
                 }
                 else if (inputType.equals("m")) {
                     String[] metaAttr = line.split(":");
@@ -68,6 +79,12 @@ public class DataReader {
                     PlanningItem planningItem = new PlanningItem(metaId, metaValue, acceptableCodes);
                     //AllocationPercentage allocationPercentage = this.problem.getAllocationPercentageList().get(0);
 
+                    JSONObject jsonItem = new JSONObject();
+                    jsonItem.put("id", metaId);
+                    jsonItem.put("acceptableCodes", acceptableCodes);
+                    jsonItem.put("estimatedResource", metaValue);
+                    items.put(jsonItem);
+
                     for (int i = 0; i < strList.length; i++) {
                         FinancialSource source = this.getSourceByCode(this.problem.getSourceList(), strList[i]);
                         ResourceAllocation resourceAllocation = new ResourceAllocation(i + 1, source, planningItem);
@@ -80,11 +97,21 @@ public class DataReader {
             System.out.println("File not founded");
         }
 
+        json.put("sources", sources);
+        json.put("items", items);
+        json.put("percentageScale", 1);
+
+        String pathFileWriter = this.directory.getAbsolutePath() + "/src/main/resources/org/optaplanner/solutions/pas/data/" + fileName + ".json";
+        FileWriter fileWriter = new FileWriter(pathFileWriter);
+        fileWriter.write(json.toString());
+        fileWriter.flush();
+        fileWriter.close();
+
         return this.problem;
     }
 
-    public ProblemContent readFromJson(String fileName) {
-        String fileContent = jsonFileToString(fileName);
+    public ProblemContent readFromJson(String path) {
+        String fileContent = jsonFileToString(path);
         JSONObject jsonObj;
         try {
             jsonObj = new JSONObject(fileContent);
@@ -134,8 +161,8 @@ public class DataReader {
         return this.problem;
     }
 
-    private String jsonFileToString(String fileName) {
-        String filePath = this.directory.getAbsolutePath() + "/src/main/resources/org/optaplanner/solutions/pas/data/" + fileName + ".json";
+    private String jsonFileToString(String path) {
+        String filePath = this.directory.getAbsolutePath() + "/src/main/resources/" + path;
         String result = "{}";
         try {
             result = new String(Files.readAllBytes(Paths.get(filePath)));

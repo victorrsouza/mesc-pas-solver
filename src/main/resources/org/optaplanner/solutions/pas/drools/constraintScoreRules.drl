@@ -1,8 +1,11 @@
 package org.optaplanner.solutions.pas.drools;
     dialect "java"
 
+import java.math.BigDecimal;
+
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder;
 import org.optaplanner.solutions.pas.domain.*;
+import org.optaplanner.solutions.pas.shared.*;
 
 global HardSoftScoreHolder scoreHolder;
 
@@ -25,7 +28,7 @@ rule "quantidadeAlocadaNaoPodeUlrapassarORecursoDisponivelNaFonte"
             $total > $availableResource
         )
     then
-        int $score = (int) ($availableResource - $total);
+        int $score = ScoreCalculator.calculate($availableResource, $total);
         scoreHolder.addHardConstraintMatch(kcontext, $score);
 end
 
@@ -44,8 +47,7 @@ rule "totalDeAlocacaoPorMetaNaoDeveSerMaiorQueCemPorcento"
             $total > 100
         )
     then
-        int $score = (int) (100 - $total);
-        if ($score == 0) $score = -1;
+        int $score = ScoreCalculator.calculate(100, $total);
         scoreHolder.addHardConstraintMatch(kcontext, $score);
 end
 
@@ -69,7 +71,6 @@ rule "totalDeAlocacaoPorMetaNaoDeveSerMenorQueCemPorcento"
             $total < 100
         )
     then
-        int $score = (int) ($total - 100);
-        if ($score == 0) $score = -1;
+        int $score = ScoreCalculator.calculate($total, 100);
         scoreHolder.addSoftConstraintMatch(kcontext, $score);
 end

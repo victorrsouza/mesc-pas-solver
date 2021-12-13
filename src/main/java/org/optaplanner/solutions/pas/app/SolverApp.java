@@ -22,21 +22,23 @@ public class SolverApp {
         // Create Dataset
         System.out.println("Creating Dataset\n");
         DataReader dataReader = new DataReader();
-        ProblemContent dataset = dataReader.readFromJson("teste_pas");
+        ProblemContent dataset = dataReader.readFromJson(
+            "org/optaplanner/solutions/pas/data/base_pas.json"
+        );
 
         List<FinancialSource> sources = dataset.getSourceList();
         List<PlanningItem> items = dataset.getPlanningItemList();
         List<ResourceAllocation> allocations = dataset.getResourceAllocationList();
         List<AllocationPercentage> percentages = dataset.getAllocationPercentageList();
 
-        PASPlanningSolver unsolved = new PASPlanningSolver(sources, items, allocations, percentages);
+        PASPlanningSolver problem = new PASPlanningSolver(sources, items, allocations, percentages);
 
         System.out.println("Build Solver\n");
         Solver<PASPlanningSolver> solver = solverFactory.buildSolver();
 
         // Solve the problem
         System.out.println("Solving :D\n");
-        PASPlanningSolver solved = solver.solve(unsolved);
+        PASPlanningSolver solved = solver.solve(problem);
 
         // Display the result
         System.out.println("\nSolved PAS with " + sources.size() + " Sources and " + items.size() + " Planning Items:\n");

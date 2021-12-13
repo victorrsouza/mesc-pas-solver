@@ -13,10 +13,6 @@
     
       <entityClass>org.optaplanner.solutions.pas.domain.ResourceAllocation
       </entityClass>
-      <!-- Domain model configuration -->
-      <!-- <scanAnnotatedClasses>
-        <packageInclude>org.optaplanner.solutions.pas</packageInclude>
-      </scanAnnotatedClasses> -->
 
       <!-- Score configuration -->
       <scoreDirectorFactory>
@@ -26,21 +22,15 @@
 
       <!-- Optimization algorithms configuration -->
       <termination>
-        <terminationCompositionStyle>OR</terminationCompositionStyle>
         <minutesSpentLimit>5</minutesSpentLimit>
-        <bestScoreLimit>0hard/0soft</bestScoreLimit>
       </termination>
 
-      <!-- Construction heuristic -->
-      <constructionHeuristic>
-        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
-      </constructionHeuristic>
     </solver>
   </inheritedSolverBenchmark>
 
   <!-- With every local search -->
   <solverBenchmarkBluePrint>
-    <solverBenchmarkBluePrintType>EVERY_LOCAL_SEARCH_TYPE</solverBenchmarkBluePrintType>
+    <solverBenchmarkBluePrintType>EVERY_CONSTRUCTION_HEURISTIC_TYPE_WITH_EVERY_LOCAL_SEARCH_TYPE</solverBenchmarkBluePrintType>
   </solverBenchmarkBluePrint>
  
 </plannerBenchmark>

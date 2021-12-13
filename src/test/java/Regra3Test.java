@@ -30,7 +30,7 @@ public class Regra3Test extends BaseTest {
 			.map(x -> x.getAllocationPercentage().getValue())
 			.reduce(BigDecimal.ZERO, BigDecimal::add);
 
-		Double sourceUsed = solved.getAllocationList().stream()
+		double sourceUsed = solved.getAllocationList().stream()
 			.map(x -> x.getCalculationSourceUsed())
 			.reduce(0.0, Double::sum);
 
@@ -70,12 +70,12 @@ public class Regra3Test extends BaseTest {
 			.map(x -> x.getAllocationPercentage().getValue())
 			.reduce(BigDecimal.ZERO, BigDecimal::add);
 
-		Double sourceUsed1 = solved.getAllocationList().stream()
+		double sourceUsed1 = solved.getAllocationList().stream()
 			.filter(x -> x.getSource().equals(source1))
 			.map(x -> x.getCalculationSourceUsed())
 			.reduce(0.0, Double::sum);
 
-		Double sourceUsed2 = solved.getAllocationList().stream()
+		double sourceUsed2 = solved.getAllocationList().stream()
 			.filter(x -> x.getSource().equals(source2))
 			.map(x -> x.getCalculationSourceUsed())
 			.reduce(0.0, Double::sum);
@@ -113,7 +113,7 @@ public class Regra3Test extends BaseTest {
 			.map(x -> x.getAllocationPercentage().getValue())
 			.reduce(BigDecimal.ZERO, BigDecimal::add);
 
-		Double sourceUsed = solved.getAllocationList().stream()
+		double sourceUsed = solved.getAllocationList().stream()
 			.filter(x -> x.getSource().equals(source))
 			.map(x -> x.getCalculationSourceUsed())
 			.reduce(0.0, Double::sum);
